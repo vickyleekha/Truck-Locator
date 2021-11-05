@@ -18,7 +18,7 @@
         />
 
     <item
-        android:id="@+id/location"
+        android:id="@+id/action_location"
         android:icon="@drawable/ic_baseline_my_location_24"
         android:title="menu"
         app:showAsAction="always"

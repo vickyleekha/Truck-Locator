@@ -6,6 +6,11 @@ import androidx.appcompat.app.AppCompatActivity
 import app.sovic.trucklocator.databinding.ActivityMainBinding
 import app.sovic.trucklocator.views.fragments.ListViewFragment
 import dagger.hilt.android.AndroidEntryPoint
+import android.R
+import android.view.MenuItem
+import app.sovic.trucklocator.MapsFragment
+import app.sovic.trucklocator.views.fragments.MapViewFragment
+
 
 @AndroidEntryPoint
 class MainActivity : AppCompatActivity() {
@@ -20,7 +25,7 @@ class MainActivity : AppCompatActivity() {
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
 
         val fm = supportFragmentManager.beginTransaction()
-        fm.add(app.sovic.trucklocator.R.id.flContainer, ListViewFragment())
+        fm.add(app.sovic.trucklocator.R.id.flContainer, MapsFragment())
             .addToBackStack(null).commit()
     }
 
@@ -29,4 +34,20 @@ class MainActivity : AppCompatActivity() {
         menuInflater.inflate(app.sovic.trucklocator.R.menu.main, menu)
         return true
     }
+
+//    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+//        // Handle item selection
+//        return when (item.itemId) {
+//            R.id.actionLocation -> {
+//                newGame()
+//                true
+//            }
+//            else -> super.onOptionsItemSelected(item)
+//        }
+//    }
+
+//    override fun onPrepareOptionsMenu(menu: Menu?): Boolean {
+//        return super.onPrepareOptionsMenu(menu)
+//        menu.
+//    }
 }

@@ -13,15 +13,29 @@ import android.util.Log
 import android.util.Patterns
 import android.view.View
 import android.view.inputmethod.InputMethodManager
-import androidx.annotation.IdRes
-import androidx.fragment.app.Fragment
-import androidx.fragment.app.FragmentManager
 import androidx.lifecycle.MutableLiveData
-import java.io.File
 import java.text.DecimalFormat
+import java.util.concurrent.TimeUnit
 import kotlin.math.floor
 import kotlin.math.log10
 import kotlin.math.pow
+import android.graphics.drawable.Drawable
+
+import androidx.annotation.NonNull
+
+import android.graphics.PorterDuff
+import android.view.MenuItem
+import android.widget.ImageView
+
+import androidx.core.graphics.drawable.DrawableCompat
+
+import androidx.core.content.ContextCompat
+
+import androidx.annotation.ColorRes
+
+import androidx.annotation.DrawableRes
+import java.lang.NullPointerException
+
 
 const val DEVICE_ID = 6
 const val API_KEY =
@@ -335,3 +349,49 @@ fun isGooglePhotosUri(uri: Uri) =
     "com.google.android.apps.photos.content" == uri.authority
 
 //code for real path end here
+
+//time conversion
+//fun ConvertSectoDay(n: Long):String{
+//    var n = n
+//    val day = n / (24 * 3600)
+//    n = n % (24 * 3600)
+//    val hour = n / 3600
+//    n %= 3600
+//    val minutes = n / 60
+//    n %= 60
+//    val seconds = n
+//    println(
+//        day.toString() + " " + "days " + hour
+//                + " " + "hours " + minutes + " "
+//                + "minutes " + seconds + " "
+//                + "seconds "
+//    )
+//
+//    return  day.toString()
+//}
+
+
+fun ConvertSectoDay(n: Long):String {
+    val milliseconds = n
+    val dy: Long = TimeUnit.NANOSECONDS.toDays(milliseconds)
+    val hr: Long = (TimeUnit.NANOSECONDS.toHours(milliseconds)
+            - TimeUnit.DAYS.toHours(TimeUnit.NANOSECONDS.toDays(milliseconds)))
+    val min: Long = (TimeUnit.NANOSECONDS.toMinutes(milliseconds)
+            - TimeUnit.HOURS.toMinutes(TimeUnit.NANOSECONDS.toHours(milliseconds)))
+    val sec: Long = (TimeUnit.NANOSECONDS.toSeconds(milliseconds)
+            - TimeUnit.MINUTES.toSeconds(TimeUnit.NANOSECONDS.toMinutes(milliseconds)))
+    val ms: Long = (TimeUnit.NANOSECONDS.toMillis(milliseconds)
+            - TimeUnit.SECONDS.toMillis(TimeUnit.NANOSECONDS.toSeconds(milliseconds)))
+    println(
+        String.format(
+            "%d Days %d Hours %d Minutes %d Seconds %d Milliseconds",
+            dy,
+            hr,
+            min,
+            sec,
+            ms
+        )
+    )
+    return min.toString()
+}
+

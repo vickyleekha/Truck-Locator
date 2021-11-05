@@ -1,7 +1,7 @@
 package app.sovic.trucklocator.data.model
 
 data class Response(
-    val `data`: List<Data>,
+    val `data`: MutableList<Data>,
     val responseCode: ResponseCode
 )
 
