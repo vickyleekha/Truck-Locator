@@ -5,7 +5,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <TextView
-        android:id="@+id/truckName"
+        android:id="@+id/truckNumber"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:layout_constraintStart_toStartOf="parent"
@@ -18,7 +18,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="10dp"
-        app:layout_constraintStart_toEndOf="@+id/truckName"
+        app:layout_constraintStart_toEndOf="@+id/truckNumber"
         app:layout_constraintTop_toTopOf="parent"
         android:src="@drawable/ic_menu"
         android:background="@color/black"/>
@@ -28,7 +28,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/truckName"
+        app:layout_constraintTop_toBottomOf="@id/truckNumber"
         android:text="hello"
         android:textColor="@color/black" />
 
@@ -65,7 +65,7 @@
         android:layout_height="wrap_content"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@id/time"
-        android:text="hello"
+        android:text="k/h"
         android:textColor="@color/black"/>
 
 

@@ -14,6 +14,6 @@ import javax.inject.Inject
 class TruckViewModel @Inject constructor (private val dataRepository: DataRepository) : ViewModel() {
 
  fun getDataList(): MutableLiveData<Response> {
-        return dataRepository.getTruckData() as MutableLiveData<Response>
+        return MutableLiveData(dataRepository.getTruckData())
         }
 }
