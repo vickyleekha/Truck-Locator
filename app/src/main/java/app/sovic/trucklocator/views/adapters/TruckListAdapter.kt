@@ -4,14 +4,20 @@ import android.content.Context
 import android.graphics.Color
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import android.widget.Filter
+import android.widget.Filterable
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import app.sovic.trucklocator.*
 import app.sovic.trucklocator.data.model.Data
 import app.sovic.trucklocator.databinding.ItemListViewBinding
+import app.sovic.trucklocator.utils.CustomFilter
 
 class TruckListAdapter(val context: Context) :
-    ListAdapter<Data, TruckListAdapter.ViewHolder>(DiffUtil()) {
+    ListAdapter<Data, TruckListAdapter.ViewHolder>(DiffUtil()), Filterable {
+
+    var items:MutableList<Data> = ArrayList()
+    var filter: CustomFilter?=null
     inner class ViewHolder(val itemBinding: ItemListViewBinding) :
         RecyclerView.ViewHolder(itemBinding.root) {
         fun bind(item: Data) {
@@ -47,6 +53,7 @@ class TruckListAdapter(val context: Context) :
     )
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
+        items=currentList
         holder.bind(getItem(position))
     }
 
@@ -60,6 +67,15 @@ class TruckListAdapter(val context: Context) :
             TODO("Not yet implemented")
         }
 
+    }
+
+    override fun getFilter(): Filter {
+        if (filter == null) {
+            var filterLis=items
+
+            filter = CustomFilter(filterLis,this)
+        }
+        return filter as CustomFilter
     }
 
 }

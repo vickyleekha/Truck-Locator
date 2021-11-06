@@ -30,11 +30,11 @@ import dagger.hilt.android.AndroidEntryPoint
 
 
 @AndroidEntryPoint
-class MapsFragment :Fragment(){
-//    BaseFragment<FragmentMapsBinding>(R.layout.fragment_maps) {
+class MapsFragment :
+    BaseFragment<FragmentMapsBinding>(R.layout.fragment_maps) {
 
-
-//    override val binding by lazy {  FragmentMapsBinding.inflate(layoutInflater) }
+    //    Fragment(){
+    override val binding by lazy { FragmentMapsBinding.inflate(layoutInflater) }
 
     private val truckViewModel: TruckViewModel by viewModels()
 
@@ -102,7 +102,7 @@ class MapsFragment :Fragment(){
             }
 
             //whatever time is responded time
-            else if (locationArrayList[i].lastWaypoint.updateTime > 14400000000000 ) {
+            else if (locationArrayList[i].lastWaypoint.updateTime > 14400000000000) {
                 val latLngRed = latLng
                 // below line is use to add marker to each location of our array list.
                 googleMap.addMarker(
@@ -115,7 +115,6 @@ class MapsFragment :Fragment(){
                 )
 
             }
-
 
 
             // below lin is use to zoom our camera on map.
@@ -137,16 +136,26 @@ class MapsFragment :Fragment(){
         }
     }
 
-    override fun onCreateView(
-        inflater: LayoutInflater,
-        container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
-        return inflater.inflate(R.layout.fragment_maps, container, false)
-    }
+//    override fun onCreateView(
+//        inflater: LayoutInflater,
+//        container: ViewGroup?,
+//        savedInstanceState: Bundle?
+//    ): View? {
+//        return inflater.inflate(R.layout.fragment_maps, container, false)
+//    }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        binding.run {
+            included.apply {
+                ivLocation.viewGone()
+               ibEdit.viewInvisible()
+                ivlist.apply {
+                    viewVisible()
+                    setOnClickListener { moveTo() }
+                }
+            }
+        }
         val mapFragment = childFragmentManager.findFragmentById(R.id.map) as SupportMapFragment?
         mapFragment?.getMapAsync(callback)
 
@@ -161,7 +170,6 @@ class MapsFragment :Fragment(){
         })
 
     }
-
 
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
@@ -181,10 +189,9 @@ class MapsFragment :Fragment(){
     }
 
 
-
-//    override fun onBackPressed() {
-//      requireActivity().finish()
-//    }
+    override fun onBackPressed() {
+        requireActivity().finish()
+    }
 
 
 }
