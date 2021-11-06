@@ -3,19 +3,19 @@ package app.sovic.trucklocator
 import android.content.Context
 import android.graphics.Bitmap
 import android.graphics.Canvas
-import androidx.fragment.app.Fragment
 
 import android.os.Bundle
 import android.util.Log
-import android.view.LayoutInflater
 import android.view.MenuItem
 import android.view.View
-import android.view.ViewGroup
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.viewModels
 import androidx.navigation.findNavController
 import app.sovic.trucklocator.data.model.Data
 import app.sovic.trucklocator.databinding.FragmentMapsBinding
+import app.sovic.trucklocator.utils.viewGone
+import app.sovic.trucklocator.utils.viewInvisible
+import app.sovic.trucklocator.utils.viewVisible
 import app.sovic.trucklocator.viewModels.TruckViewModel
 import app.sovic.trucklocator.views.fragments.BaseFragment
 
@@ -149,7 +149,7 @@ class MapsFragment :
         binding.run {
             included.apply {
                 ivLocation.viewGone()
-               ibEdit.viewInvisible()
+            mSearch.viewInvisible()
                 ivlist.apply {
                     viewVisible()
                     setOnClickListener { moveTo() }

@@ -2,16 +2,13 @@ package app.sovic.trucklocator.views.fragments
 
 import android.os.Bundle
 import android.util.Log
-import android.view.MenuItem
 import android.view.View
 import androidx.fragment.app.viewModels
 import androidx.navigation.findNavController
-import androidx.navigation.ui.NavigationUI
 import app.sovic.trucklocator.R
+import app.sovic.trucklocator.data.model.Data
 import app.sovic.trucklocator.databinding.FragmentListViewBinding
-import app.sovic.trucklocator.viewGone
 import app.sovic.trucklocator.viewModels.TruckViewModel
-import app.sovic.trucklocator.viewVisible
 import app.sovic.trucklocator.views.adapters.TruckListAdapter
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -21,13 +18,13 @@ class ListViewFragment : BaseFragment<FragmentListViewBinding>(R.layout.fragment
     override val binding by lazy { FragmentListViewBinding.inflate(layoutInflater) }
 
     private val truckViewModel: TruckViewModel by viewModels()
-
-    private val truckListAdapter by lazy { TruckListAdapter(requireContext()) }
+    private var dataList:MutableList<Data> = ArrayList ()
+    private val truckListAdapter by lazy { TruckListAdapter(dataList,requireContext()) }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        setHasOptionsMenu(true)
-//search()
+//        setHasOptionsMenu(true)
+           search()
         binding.run {
             included.ivLocation.setOnClickListener {
                 moveTo()
@@ -38,8 +35,7 @@ class ListViewFragment : BaseFragment<FragmentListViewBinding>(R.layout.fragment
 
             storiesData.observe(viewLifecycleOwner, { value ->
 //                        if (!value.data.i) {
-                val dataList = value.data
-                truckListAdapter.submitList(dataList)
+                dataList.addAll(value.data)
                 Log.d("DATA", dataList.toString())
 
 //                            storiesPagerAdapter = StoriesPagerAdapter(this, dataList)
@@ -53,22 +49,22 @@ class ListViewFragment : BaseFragment<FragmentListViewBinding>(R.layout.fragment
     }
 
 
-//    //for searching local data
-//    private fun search() {
-//        binding.included.mSearch.setOnQueryTextListener(object :
-//            androidx.appcompat.widget.SearchView.OnQueryTextListener {
-//            override fun onQueryTextSubmit(query: String?): Boolean {
-//                return false
-//            }
-//
-//            override fun onQueryTextChange(query: String?): Boolean {
-//                //FILTER AS YOU TYPE
-//              truckListAdapter.getFilter().filter(query)
-//                return false
-//            }
-//        })
-//
-//    }
+    //for searching local data
+    private fun search() {
+        binding.included.mSearch.setOnQueryTextListener(object :
+            androidx.appcompat.widget.SearchView.OnQueryTextListener {
+            override fun onQueryTextSubmit(query: String?): Boolean {
+                return false
+            }
+
+            override fun onQueryTextChange(query: String?): Boolean {
+                //FILTER AS YOU TYPE
+              truckListAdapter.getFilter().filter(query)
+                return false
+            }
+        })
+
+    }
 
 
 

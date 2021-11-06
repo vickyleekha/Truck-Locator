@@ -36,31 +36,31 @@
         android:layout_marginTop="12dp"
         android:layout_marginEnd="20dp"
         android:src="@drawable/ic_baseline_loop_24"
-        app:layout_constraintEnd_toStartOf="@id/ibEdit"
+        app:layout_constraintEnd_toStartOf="@id/mSearch"
         app:layout_constraintTop_toTopOf="parent" />
 
 
-<!--    <androidx.appcompat.widget.SearchView-->
-<!--        android:id="@+id/mSearch"-->
-<!--        android:layout_width="wrap_content"-->
-<!--        android:layout_height="30dp"-->
-<!--        app:defaultQueryHint="Search.."-->
-<!--        android:layout_marginTop="12dp"-->
-<!--        android:layout_marginEnd="50dp"-->
-<!--        android:src="@drawable/ic_baseline_search_24"-->
-<!--        app:layout_constraintEnd_toEndOf="parent"-->
-<!--        app:layout_constraintTop_toTopOf="parent" />-->
-
-
-    <ImageView
-        android:id="@+id/ibEdit"
+    <androidx.appcompat.widget.SearchView
+        android:id="@+id/mSearch"
         android:layout_width="wrap_content"
         android:layout_height="30dp"
+        style="@style/SearchViewStyle"
         android:layout_marginTop="12dp"
         android:layout_marginEnd="50dp"
         android:src="@drawable/ic_baseline_search_24"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+
+<!--    <ImageView-->
+<!--        android:id="@+id/mSearch"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="30dp"-->
+<!--        android:layout_marginTop="12dp"-->
+<!--        android:layout_marginEnd="50dp"-->
+<!--        android:src="@drawable/ic_baseline_search_24"-->
+<!--        app:layout_constraintEnd_toEndOf="parent"-->
+<!--        app:layout_constraintTop_toTopOf="parent" />-->
 
     <ImageView
         android:id="@+id/ivLocation"
