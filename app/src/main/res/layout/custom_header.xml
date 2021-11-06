@@ -27,17 +27,19 @@
         android:textSize="16sp"
         android:text="@string/app_name"
         app:layout_constraintStart_toEndOf="@id/ivMenu"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="@id/ivMenu"
+        app:layout_constraintBottom_toBottomOf="@id/ivMenu"/>
 
     <ImageView
         android:id="@+id/ivRefersh"
         android:layout_width="wrap_content"
         android:layout_height="30dp"
         android:layout_marginTop="12dp"
-        android:layout_marginEnd="20dp"
+        android:layout_marginEnd="10dp"
         android:src="@drawable/ic_baseline_loop_24"
         app:layout_constraintEnd_toStartOf="@id/mSearch"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="@id/ivMenu"
+        app:layout_constraintBottom_toBottomOf="@id/ivMenu" />
 
 
     <androidx.appcompat.widget.SearchView
@@ -46,10 +48,10 @@
         android:layout_height="30dp"
         style="@style/SearchViewStyle"
         android:layout_marginTop="12dp"
-        android:layout_marginEnd="50dp"
-        android:src="@drawable/ic_baseline_search_24"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:layout_marginEnd="40dp"
+       app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@id/ivMenu"
+        app:layout_constraintBottom_toBottomOf="@id/ivMenu"/>
 
 
 <!--    <ImageView-->
@@ -70,7 +72,8 @@
         android:layout_marginEnd="10dp"
         android:src="@drawable/ic_baseline_my_location_24"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="@id/ivMenu"
+        app:layout_constraintBottom_toBottomOf="@id/ivMenu" />
 
     <ImageView
         android:id="@+id/ivlist"
@@ -78,10 +81,12 @@
         android:layout_height="30dp"
         android:layout_marginTop="12dp"
         android:layout_marginEnd="10dp"
+        android:layout_marginStart="10dp"
         android:src="@drawable/ic_baseline_view_list_24"
         android:visibility="gone"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="@id/ivMenu"
+        app:layout_constraintBottom_toBottomOf="@id/ivMenu" />
 
 
 

@@ -1,4 +1,4 @@
-package app.sovic.trucklocator
+package app.sovic.trucklocator.views.fragments
 
 import android.content.Context
 import android.graphics.Bitmap
@@ -11,13 +11,12 @@ import android.view.View
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.viewModels
 import androidx.navigation.findNavController
+import app.sovic.trucklocator.R
 import app.sovic.trucklocator.data.model.Data
 import app.sovic.trucklocator.databinding.FragmentMapsBinding
 import app.sovic.trucklocator.utils.viewGone
-import app.sovic.trucklocator.utils.viewInvisible
 import app.sovic.trucklocator.utils.viewVisible
 import app.sovic.trucklocator.viewModels.TruckViewModel
-import app.sovic.trucklocator.views.fragments.BaseFragment
 
 import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.OnMapReadyCallback
@@ -149,7 +148,7 @@ class MapsFragment :
         binding.run {
             included.apply {
                 ivLocation.viewGone()
-            mSearch.viewInvisible()
+//            mSearch.viewInvisible()
                 ivlist.apply {
                     viewVisible()
                     setOnClickListener { moveTo() }

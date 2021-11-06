@@ -17,7 +17,7 @@
     </fragment>
     <fragment
         android:id="@+id/mapsFragment"
-        android:name="app.sovic.trucklocator.MapsFragment"
+        android:name="app.sovic.trucklocator.views.fragments.MapsFragment"
         android:label="fragment_maps"
         tools:layout="@layout/fragment_maps" >
         <action
