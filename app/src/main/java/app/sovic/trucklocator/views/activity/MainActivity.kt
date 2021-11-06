@@ -3,18 +3,19 @@ package app.sovic.trucklocator.views.activity
 import android.os.Bundle
 import android.view.Menu
 import androidx.appcompat.app.AppCompatActivity
+import androidx.navigation.NavController
+import androidx.navigation.NavDestination
+import androidx.navigation.findNavController
+import app.sovic.trucklocator.R
 import app.sovic.trucklocator.databinding.ActivityMainBinding
-import app.sovic.trucklocator.views.fragments.ListViewFragment
 import dagger.hilt.android.AndroidEntryPoint
-import android.R
-import android.view.MenuItem
-import app.sovic.trucklocator.MapsFragment
-import app.sovic.trucklocator.views.fragments.MapViewFragment
 
 
 @AndroidEntryPoint
-class MainActivity : AppCompatActivity() {
+class MainActivity : AppCompatActivity(), NavController.OnDestinationChangedListener {
     lateinit var binding: ActivityMainBinding
+
+    private val navController by lazy { findNavController(R.id.nav_host_fragment) }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -23,10 +24,10 @@ class MainActivity : AppCompatActivity() {
 
         supportActionBar?.setHomeAsUpIndicator(app.sovic.trucklocator.R.drawable.ic_menu)
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
-
-        val fm = supportFragmentManager.beginTransaction()
-        fm.add(app.sovic.trucklocator.R.id.flContainer, MapsFragment())
-            .addToBackStack(null).commit()
+//
+//        val fm = supportFragmentManager.beginTransaction()
+//        fm.add(app.sovic.trucklocator.R.id.flContainer, MapsFragment())
+//            .addToBackStack(null).commit()
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
@@ -35,16 +36,13 @@ class MainActivity : AppCompatActivity() {
         return true
     }
 
-//    override fun onOptionsItemSelected(item: MenuItem): Boolean {
-//        // Handle item selection
-//        return when (item.itemId) {
-//            R.id.actionLocation -> {
-//                newGame()
-//                true
-//            }
-//            else -> super.onOptionsItemSelected(item)
-//        }
-//    }
+    override fun onDestinationChanged(
+        controller: NavController,
+        destination: NavDestination,
+        arguments: Bundle?
+    ) {
+        TODO("Not yet implemented")
+    }
 
 //    override fun onPrepareOptionsMenu(menu: Menu?): Boolean {
 //        return super.onPrepareOptionsMenu(menu)

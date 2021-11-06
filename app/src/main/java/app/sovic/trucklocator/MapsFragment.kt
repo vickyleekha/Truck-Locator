@@ -8,12 +8,16 @@ import androidx.fragment.app.Fragment
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
+import android.view.MenuItem
 import android.view.View
 import android.view.ViewGroup
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.viewModels
+import androidx.navigation.findNavController
 import app.sovic.trucklocator.data.model.Data
+import app.sovic.trucklocator.databinding.FragmentMapsBinding
 import app.sovic.trucklocator.viewModels.TruckViewModel
+import app.sovic.trucklocator.views.fragments.BaseFragment
 
 import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.OnMapReadyCallback
@@ -26,8 +30,11 @@ import dagger.hilt.android.AndroidEntryPoint
 
 
 @AndroidEntryPoint
-class MapsFragment : Fragment() {
+class MapsFragment :Fragment(){
+//    BaseFragment<FragmentMapsBinding>(R.layout.fragment_maps) {
 
+
+//    override val binding by lazy {  FragmentMapsBinding.inflate(layoutInflater) }
 
     private val truckViewModel: TruckViewModel by viewModels()
 
@@ -154,6 +161,30 @@ class MapsFragment : Fragment() {
         })
 
     }
+
+
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        // Handle item selection
+        return when (item.itemId) {
+            R.id.action_location -> {
+                moveTo()
+                true
+            }
+            else ->
+                super.onOptionsItemSelected(item)
+        }
+    }
+
+    private fun moveTo() {
+        view?.findNavController()?.navigate(R.id.action_mapsFragment_to_listFragment)
+    }
+
+
+
+//    override fun onBackPressed() {
+//      requireActivity().finish()
+//    }
 
 
 }

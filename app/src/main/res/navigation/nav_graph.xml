@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/listFragment">
+
+
+    <fragment
+        android:id="@+id/listFragment"
+        android:name="app.sovic.trucklocator.views.fragments.ListViewFragment"
+        android:label="fragment_list_view"
+        tools:layout="@layout/fragment_list_view" >
+        <action
+            android:id="@+id/action_listFragment_to_mapsFragment"
+            app:destination="@id/mapsFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/mapsFragment"
+        android:name="app.sovic.trucklocator.MapsFragment"
+        android:label="fragment_maps"
+        tools:layout="@layout/fragment_maps" >
+        <action
+            android:id="@+id/action_mapsFragment_to_listFragment"
+            app:destination="@id/listFragment" />
+    </fragment>
+
+</navigation>

@@ -19,22 +19,6 @@ import java.util.concurrent.TimeUnit
 import kotlin.math.floor
 import kotlin.math.log10
 import kotlin.math.pow
-import android.graphics.drawable.Drawable
-
-import androidx.annotation.NonNull
-
-import android.graphics.PorterDuff
-import android.view.MenuItem
-import android.widget.ImageView
-
-import androidx.core.graphics.drawable.DrawableCompat
-
-import androidx.core.content.ContextCompat
-
-import androidx.annotation.ColorRes
-
-import androidx.annotation.DrawableRes
-import java.lang.NullPointerException
 
 
 const val DEVICE_ID = 6

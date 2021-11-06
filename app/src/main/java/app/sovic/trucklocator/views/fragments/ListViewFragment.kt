@@ -2,8 +2,11 @@ package app.sovic.trucklocator.views.fragments
 
 import android.os.Bundle
 import android.util.Log
+import android.view.MenuItem
 import android.view.View
 import androidx.fragment.app.viewModels
+import androidx.navigation.findNavController
+import androidx.navigation.ui.NavigationUI
 import app.sovic.trucklocator.R
 import app.sovic.trucklocator.databinding.FragmentListViewBinding
 import app.sovic.trucklocator.viewModels.TruckViewModel
@@ -41,7 +44,26 @@ class ListViewFragment : BaseFragment<FragmentListViewBinding>(R.layout.fragment
         }
     }
 
+
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        // Handle item selection
+        return when (item.itemId) {
+            R.id.action_location -> {
+                moveTo()
+                true
+            }
+           else ->
+        super.onOptionsItemSelected(item)
+    }
+}
+
+    private fun moveTo() {
+        view?.findNavController()?.navigate(R.id.action_listFragment_to_mapsFragment)
+    }
+
+
     override fun onBackPressed() {
-        TODO("Not yet implemented")
+       requireActivity().finish()
     }
 }
