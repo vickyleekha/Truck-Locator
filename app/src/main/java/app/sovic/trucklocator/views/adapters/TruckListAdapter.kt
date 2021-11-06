@@ -6,11 +6,9 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
-import app.sovic.trucklocator.ConvertSectoDay
-import app.sovic.trucklocator.R
+import app.sovic.trucklocator.*
 import app.sovic.trucklocator.data.model.Data
 import app.sovic.trucklocator.databinding.ItemListViewBinding
-import app.sovic.trucklocator.getString
 
 class TruckListAdapter(val context: Context) :
     ListAdapter<Data, TruckListAdapter.ViewHolder>(DiffUtil()) {
@@ -21,7 +19,7 @@ class TruckListAdapter(val context: Context) :
                 truckNumber.text = item.truckNumber
                 truckSpeed.text = item.lastWaypoint.speed.toString()
                 daysCount.text = ConvertSectoDay(item.lastWaypoint.createTime)
-                if (item.lastWaypoint.ignitionOn.equals(true))
+                if (item.lastWaypoint.updateTime > 14400000000000 )
                 {
                     cardView.setBackgroundColor(Color.RED)
                 }
@@ -30,11 +28,14 @@ class TruckListAdapter(val context: Context) :
                 }
                 truckStatus.apply {
                     text =
-                        "${if (item.lastRunningState.truckRunningState == 0) "Stopped" else "Running"}       since last  ${
+                        "${if (item.lastRunningState.truckRunningState == 0) "Stopped" else "Running"} since last  ${
                             ConvertSectoDay(item.lastRunningState.stopStartTime)
                         }"
                 }
+                truckSpeed.apply { if (item.lastRunningState.truckRunningState == 0) viewGone() else viewVisible() }
+                speedMeasure.apply { if (item.lastRunningState.truckRunningState == 0) viewGone() else viewVisible() }
             }
+
         }
 
     }

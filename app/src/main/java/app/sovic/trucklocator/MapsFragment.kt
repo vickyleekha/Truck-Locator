@@ -101,8 +101,8 @@ class MapsFragment :Fragment(){
                 }
             }
 
-            //iska correct logic find krna hai
-            else if (locationArrayList[i].lastRunningState.stopStartTime > 240) {
+            //whatever time is responded time
+            else if (locationArrayList[i].lastWaypoint.updateTime > 14400000000000 ) {
                 val latLngRed = latLng
                 // below line is use to add marker to each location of our array list.
                 googleMap.addMarker(
@@ -167,7 +167,7 @@ class MapsFragment :Fragment(){
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         // Handle item selection
         return when (item.itemId) {
-            R.id.action_location -> {
+            R.id.list -> {
                 moveTo()
                 true
             }

@@ -366,6 +366,9 @@ fun ConvertSectoDay(n: Long):String {
             - TimeUnit.MINUTES.toSeconds(TimeUnit.NANOSECONDS.toMinutes(milliseconds)))
     val ms: Long = (TimeUnit.NANOSECONDS.toMillis(milliseconds)
             - TimeUnit.SECONDS.toMillis(TimeUnit.NANOSECONDS.toSeconds(milliseconds)))
+
+
+
     println(
         String.format(
             "%d Days %d Hours %d Minutes %d Seconds %d Milliseconds",
@@ -376,6 +379,16 @@ fun ConvertSectoDay(n: Long):String {
             ms
         )
     )
-    return min.toString()
+    return when {
+        dy >= 2 -> {
+            "$dy days"
+        }
+        hr > 24 -> {
+            "$dy day ago"}
+        min > 60 -> "$hr hours"
+        min < 60 -> "$min mins"
+        sec <60 -> "$sec sec"
+        else -> "$ms milliseconds"
+    }
 }
 

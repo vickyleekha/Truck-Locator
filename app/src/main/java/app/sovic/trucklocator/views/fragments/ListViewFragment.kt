@@ -9,7 +9,9 @@ import androidx.navigation.findNavController
 import androidx.navigation.ui.NavigationUI
 import app.sovic.trucklocator.R
 import app.sovic.trucklocator.databinding.FragmentListViewBinding
+import app.sovic.trucklocator.viewGone
 import app.sovic.trucklocator.viewModels.TruckViewModel
+import app.sovic.trucklocator.viewVisible
 import app.sovic.trucklocator.views.adapters.TruckListAdapter
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -24,8 +26,14 @@ class ListViewFragment : BaseFragment<FragmentListViewBinding>(R.layout.fragment
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        setHasOptionsMenu(true)
 
         binding.run {
+            included.ivLocation.setOnClickListener{
+                moveTo()
+                included.ivLocation.viewGone()
+                included.ivlist.viewVisible()
+            }
             recyclerViewList.adapter=truckListAdapter
             val storiesData =truckViewModel.getDataList()
 
@@ -45,20 +53,22 @@ class ListViewFragment : BaseFragment<FragmentListViewBinding>(R.layout.fragment
     }
 
 
-
-    override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        // Handle item selection
-        return when (item.itemId) {
-            R.id.action_location -> {
-                moveTo()
-                true
-            }
-           else ->
-        super.onOptionsItemSelected(item)
-    }
-}
+//
+//    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+//        // Handle item selection
+//        return when (item.itemId) {
+//            R.id.maps-> {
+//
+//                moveTo()
+//                true
+//            }
+//           else ->
+//        super.onOptionsItemSelected(item)
+//    }
+//}
 
     private fun moveTo() {
+
         view?.findNavController()?.navigate(R.id.action_listFragment_to_mapsFragment)
     }
 
